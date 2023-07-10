@@ -17,7 +17,7 @@ class ZombieTable :
 {
 protected:
     std::unordered_map<Zombie::Types, ZombieInfo> table;
-
+    std::vector<ZombieInfo> zombieInfos;
 public:
     ZombieTable() : DataTable(DataTable::Ids::Zombie) {};
     virtual ~ZombieTable() override = default;

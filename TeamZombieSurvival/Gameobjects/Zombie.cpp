@@ -9,18 +9,6 @@
 #include "DataTableMgr.h"
 #include "ZombieTable.h"
 
-//파일 입출력으로 대치 되어야하는 부분 stakrt
-const string Zombie::textureIds[3] = {
-        "graphics/bloater.png",
-        "graphics/chaser.png",
-        "graphics/crawler.png"
-};
-
-const float Zombie::speedStats[3] = { 40.f, 70.f, 20.f };
-const int Zombie::hpStats[3] = { 100, 75, 50 };
-const int Zombie::damages[3] = { 15, 10, 5 };
-const float Zombie::attackRates[3] = { 2.f, 0.5f, 1.f };
-const int Zombie::scores[3] = { 10, 5, 3 };
 
 Zombie::Zombie(const string& n)
     :SpriteGo("", n)
@@ -98,17 +86,12 @@ void Zombie::SetType(Types t)
 
     const ZombieInfo& info = DATATABLE_MGR.Get<ZombieTable>(DataTable::Ids::Zombie)->Get(t);
 
-
-    int index = (int)zombieType;
-
     textureId = info.textureId; //이미지 설정
-
-
-    speed = speedStats[index]; //속도 설정
-    maxHp = hpStats[index]; //최대 체력 설정
-    damage = damages[index];
-    attackRate = attackRates[index];
-    score = scores[index];
+    speed = info.speed; //속도 설정
+    maxHp = info.maxHp; //최대 체력 설정
+    damage = info.damage;
+    attackRate = info.attackRate;
+    score = info.score;
 }
 
 Zombie::Types Zombie::GetType() const

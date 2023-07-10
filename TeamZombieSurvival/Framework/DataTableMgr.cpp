@@ -5,7 +5,7 @@
 void DataTableMgr::LoadAll()
 {
 	tables.insert({ DataTable::Ids::String, new StringTable() });
-	tables.insert({ DataTable::Ids::String, new ZombieTable() });
+	tables.insert({ DataTable::Ids::Zombie, new ZombieTable() });
 
 
 	for (auto pair : tables)
