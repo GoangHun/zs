@@ -35,7 +35,6 @@ bool ZombieTable::Load()
 
 void ZombieTable::Release()
 {
-	//table.second delete
 	table.clear();
 }
 

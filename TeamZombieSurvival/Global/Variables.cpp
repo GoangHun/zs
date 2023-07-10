@@ -1,4 +1,4 @@
 #include "stdafx.h"
 #include "Variables.h"
 
-Languages Variables::CurrentLang = Languages::ENG;
+Languages Variables::CurrentLang = Languages::KOR;

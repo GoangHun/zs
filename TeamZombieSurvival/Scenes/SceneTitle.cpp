@@ -8,6 +8,9 @@
 #include "TextGo.h"
 #include "StringTable.h"
 #include "DataTableMgr.h"
+//#include <locale>
+#include <codecvt>
+
 
 #define BLOCKS 4
 #define SQUARE 30.0
@@ -19,6 +22,7 @@ SceneTitle::SceneTitle()
 	screenSize = FRAMEWORK.GetWindowSize();
 	resources.push_back(std::make_tuple(ResourceTypes::Texture, "graphics/background.png"));
 	resources.push_back(make_tuple(ResourceTypes::Font, "fonts/zombiecontrol.ttf"));
+	resources.push_back(make_tuple(ResourceTypes::Font, "fonts/Dobong_Cultural_Routes.ttf"));
 }
 
 void SceneTitle::Init()
@@ -40,12 +44,12 @@ void SceneTitle::Init()
 	Title->sortLayer = 100;
 	AddGo(Title);
 
+	std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
 	StringTable* stringTable = DATATABLE_MGR.Get<StringTable>(DataTable::Ids::String);
-	std::string titile = stringTable->Get("TITLE");
+	std::wstring titile = converter.from_bytes(stringTable->Get("TITLE"));
 
-	std::cout << titile << std::endl;
 	
-	AddGo(new TextGo("titleMessage", "fonts/zombiecontrol.ttf"));
+	AddGo(new TextGo("titleMessage", "fonts/Dobong_Cultural_Routes.ttf"));
 	AddGo(new TextGo("BlinkMessage", "fonts/zombiecontrol.ttf"));
 	TextGo* title = (TextGo*)FindGo("titleMessage");
 	title->text.setCharacterSize(120);
