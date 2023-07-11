@@ -44,6 +44,7 @@ const ZombieInfo& ZombieTable::Get(Zombie::Types id)
 	if (find == table.end())
 	{
 		std::cout << "Find failed in ZombieTable::table";
+		//throw로 예외를 던지거나 반환형을 *로 변환
 	}
 	return find->second;
 }
